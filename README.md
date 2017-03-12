@@ -1,17 +1,6 @@
-# README
-
-TODO:
-1. Install memcached, dalli for better caching
-2. Add redis for Rails
-3. Make production-ready so that users can easily deploy to a VPS/droplet/whatever or a docker host like heroku
-
-
-
-
-
 # Camaleon Docker
 
-A Dockerized, ready to deploy implementation of Camaleon CMS with Rails 5.0.
+A Dockerized, ready to deploy implementation of Camaleon CMS with Rails 5.0. **WIP**
 
 ## Getting Started
 
@@ -57,23 +46,25 @@ Add additional notes about how to deploy this on a live system
 5. Update the Puma config, at config/puma.rb to use the port 8080. That's what the proxy server is configured to use. You can go ahead an update the number of threads as well - I set it to be between 0 and 16 threads (unless you want to set this through an environment variable, which might be helpful in a larger-scale production environment).
 6. Update your hosts configuration file - /etc/hosts to point camaleon.docker to 127.0.0.1 so that you can navigate to your site. Alternatively
 
+
+TODO:
+1. Install memcached, dalli for better caching
+2. Add redis for Rails
+3. Make production-ready so that users can easily deploy to a VPS/droplet/whatever or a docker host like heroku
+
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Please read [CONTRIBUTING.md](https://gist.github.com/) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **William Payne** - *Initial work* - [PayneLabs](https://github.com/PayneLabs)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
