@@ -1,0 +1,22 @@
+proxy:
+  image: jwilder/nginx-proxy:latest
+  ports:
+    - "80:80"
+  volumes:
+    - "/var/run/docker.sock:/tmp/docker.sock"
+db:
+  image: mysql:5.7.7
+  volumes:
+    - './data:/var/lib/mysql'
+  environment:
+    MYSQL_ROOT_PASSWORD: mypass
+web:
+  build: .
+  command: bundle exec puma -C config/puma.rb
+  environment:
+    SECRET_KEY_BASE: abcdefg
+    VIRTUAL_HOST: localhost
+    RAILS_ENV: production
+    MYSQL_ROOT_PASSWORD: mypass
+  links:
+    - db
