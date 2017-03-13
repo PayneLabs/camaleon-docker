@@ -22,3 +22,4 @@
 
 # Ignore the "data" directory, used to store the data information.
 /data
+/public/assets/*
