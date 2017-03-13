@@ -1,0 +1,1 @@
+(function(){$(function(){var i;return i=$("#login_user"),i.submit(function(){var n;if("function"==typeof i.valid?i.valid():void 0)return n=i.find("input[name='user[password]']"),n.val(GibberishAES.enc(n.val(),kk))}).validate()})}).call(this);

@@ -10,7 +10,9 @@ end
 gem 'rails', '~> 5.0.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+gem 'sinatra', require: nil
 
+gem 'dalli'
 # Use the Camaleon CMS gem, and its dependencies, as this is the point of this project
 gem "camaleon_cms",  '>= 2.4.3'
 # Camaleon depends on these gems to work with Rails 5

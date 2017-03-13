@@ -22,7 +22,7 @@ RUN cd $APP_DIR; bundle install --without development test -j4 && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
 
-COPY . $APP_DIR
+COPY . $APP_DIR/
 ENV RAILS_ENV=production
 RUN bundle exec rake assets:precompile
 
