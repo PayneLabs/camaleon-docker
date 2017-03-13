@@ -10,10 +10,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 You'll need a machine running Docker and Docker Compose with Rails 5. I build this project on an Ubuntu 16.04 machine, but it is possible to run this project from Windows and Mac as well.
 
-```
-Give examples
-```
-
 ### Installing
 
 If you don't want to build from scratch or follow this like a tutorial (see below for steps on how to recreate this repo), then simply clone this repository and run these commands:
@@ -46,9 +42,9 @@ I'll make this a lot more detailed soon. This project is still a work in progres
 ##TODO:
 
 * [x] Install memcached, dalli for better caching
-* [] Add redis for Rails
-* [] Make production-ready so that users can easily deploy to a VPS/droplet/whatever or a docker host like heroku
-* [] Make a blog post describing the details of how I made this.
+* [ ] Add redis for Rails
+* [ ] Make production-ready so that users can easily deploy to a VPS/droplet/whatever or a docker host like heroku
+* [ ] Make a blog post describing the details of how I made this.
 
 ## Contributing
 
