@@ -45,10 +45,10 @@ I'll make this a lot more detailed soon. This project is still a work in progres
 
 ##TODO:
 
-[*] Install memcached, dalli for better caching
-[] Add redis for Rails
-[] Make production-ready so that users can easily deploy to a VPS/droplet/whatever or a docker host like heroku
-[] Make a blog post describing the details of how I made this.
+* [x] Install memcached, dalli for better caching
+* [] Add redis for Rails
+* [] Make production-ready so that users can easily deploy to a VPS/droplet/whatever or a docker host like heroku
+* [] Make a blog post describing the details of how I made this.
 
 ## Contributing
 
@@ -67,4 +67,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 * [rails-on-docker](https://github.com/neckhair/rails-on-docker) - Used his docker setup to build this one. Very helpful!
-* [camaleon_cms]() 
+* [camaleon_cms](https://github.com/owen2345/camaleon-cms) - The actualy Camaleon repository. 
