@@ -16,14 +16,11 @@ gem 'sinatra', require: nil
 gem 'dalli'
 
 # Use the Camaleon CMS gem, and its dependencies, as this is the point of this project
-gem "camaleon_cms",  '>= 2.4.3'
+
 # Camaleon depends on these gems to work with Rails 5
-gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
-gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+gem 'draper', github: 'drapergem/draper'
 gem 'json', '1.8.3'
-#################### Camaleon CMS include all gems for plugins and themes #################### 
-require './lib/plugin_routes' 
-instance_eval(PluginRoutes.draw_gems)
 
 ############################################
 #             Front-End Gems               #
@@ -45,8 +42,6 @@ gem 'jbuilder', '~> 2.5'
 ############################################
 #         Production-related Gems          #
 ############################################
-# Use figaro for conveniently managing environment variables
-# gem 'figaro'
 # Production-only gems
 group :production do
   # Use MySQL as the database in production

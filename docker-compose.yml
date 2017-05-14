@@ -1,7 +1,7 @@
 proxy:
   image: jwilder/nginx-proxy:latest
   ports:
-    - "80:80"
+    - "3000:80"
   volumes:
     - "/var/run/docker.sock:/tmp/docker.sock"
 db:
@@ -15,7 +15,7 @@ web:
   command: bundle exec puma -C config/puma.rb
   environment:
     SECRET_KEY_BASE: abcdefg
-    VIRTUAL_HOST: localhost
+    # VIRTUAL_HOST: localhost
     RAILS_ENV: production
     MYSQL_ROOT_PASSWORD: mypass
   links:
