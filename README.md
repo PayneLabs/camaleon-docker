@@ -8,12 +8,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You'll need a machine running Docker and Docker Compose with Rails 5. I build this project on an Ubuntu 16.04 machine, but it is possible to run this project from Windows and Mac as well, provided you have a VM environment configured that can run docker.
+You'll need a machine running Docker and Docker Compose with Rails 5. I built this project on an Ubuntu 16.04 machine, but it is possible to run this project from Mac and Windows as well, provided you have a VM environment configured that can run docker.
 
 ### Installing Locally
-
-If you don't want to build from scratch or follow this like a tutorial (see below for steps on how to recreate this repo), then simply clone this repository and run these commands:
-
 
 ```
 docker-compose up -d db #Start up the database container
@@ -38,11 +35,11 @@ git clone https://github.com/PayneLabs/camaleon-docker.git
   - Change the database passwords
   - Change the Virtual Host to your host name. Multiple hosts can be separated with commas, i.e. www.example.com,example.com. (See https://github.com/jwilder/nginx-proxy for details on using nginx proxy)
 
-3. Build and run the containers with docker-compose
+3. Pull and run the containers with docker-compose
 
 ```
+docker-compose pull
 docker-compose up -d db
-docker-compose build web
 docker-compose run web rake db:setup
 docker-compose up -d
 ```
@@ -95,6 +92,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-* [rails-on-docker](https://github.com/neckhair/rails-on-docker) - Used his docker setup to build this one. Very helpful!
 * [camaleon_cms](https://github.com/owen2345/camaleon-cms) - The actual Camaleon repository. 
 * [nginx-proxy](https://github.com/jwilder/nginx-proxy) - The proxy container that was used in rails-on-docker example and that is used in this project.

@@ -16,6 +16,7 @@ gem 'sinatra', require: nil
 gem 'dalli'
 
 # Use the Camaleon CMS gem, and its dependencies, as this is the point of this project
+gem "camaleon_cms",  '>= CAMA_VERSION'
 
 # Camaleon depends on these gems to work with Rails 5
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'

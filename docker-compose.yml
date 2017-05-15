@@ -1,22 +1,28 @@
-proxy:
-  image: jwilder/nginx-proxy:latest
-  ports:
-    - "3000:80"
-  volumes:
-    - "/var/run/docker.sock:/tmp/docker.sock"
-db:
-  image: mysql:5.7.7
-  volumes:
-    - './data:/var/lib/mysql'
-  environment:
-    MYSQL_ROOT_PASSWORD: mypass
-web:
-  build: .
-  command: bundle exec puma -C config/puma.rb
-  environment:
-    SECRET_KEY_BASE: abcdefg
-    # VIRTUAL_HOST: localhost
-    RAILS_ENV: production
-    MYSQL_ROOT_PASSWORD: mypass
-  links:
-    - db
+version: "3"
+services:
+  proxy:
+    image: jwilder/nginx-proxy:latest
+    restart: always
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock"
+  db:
+    image: mysql:5.7.7
+    container_name: camaleon_db
+    volumes:
+      - './data:/var/lib/mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: mypass
+  web:
+    image: wpayne/camaleon-docker:latest
+    command: bundle exec puma -C config/puma.rb
+    container_name: camaleon
+    environment:
+      SECRET_KEY_BASE: abcdefg
+      VIRTUAL_HOST: localhost #change to meet your needs
+      RAILS_ENV: production
+      MYSQL_ROOT_PASSWORD: mypass #change for production safety
+    links:
+      - db
