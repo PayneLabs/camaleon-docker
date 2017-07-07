@@ -53,6 +53,23 @@ VIRTUAL_HOST: www.example.com,example.com,www.example2.com,example2.com
 ```
 Then, you'll be able to access the new domains through the single control panel on your site. Be sure to enter the information for the new domain in your Camaleon admin panel first.
 
+6. To add a custom theme to your Camaleon Docker image, follow these steps:
+
+  1. Add the theme you want as a submodule in Git by running:
+
+  ```
+  git submodule add https://github.com/PayneLabs/FoundationCama
+  ```
+
+  2. Copy the newly cloned repository into your container:
+
+  ```
+  COPY ./FoundationCama $APP_DIR/camaleon/app/apps/themes/FoundationCama
+  ```
+
+  See the examples for other ways to import your theme.
+
+
 ## How this Project was Built:
 
 1. Install Rails, Docker
