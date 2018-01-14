@@ -27,4 +27,4 @@ production:
   username: root
   password: <%= ENV['DB_MYSQL_ROOT_PASSWORD'] %>
   host: <%= ENV['DB_MYSQL_HOST'] %>
-  database: docker_camaleon
+  database: <%= ENV['DB_DATABASE_NAME'] %>

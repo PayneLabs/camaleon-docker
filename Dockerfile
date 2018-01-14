@@ -30,22 +30,26 @@ COPY Gemfile ./Gemfile
 COPY database.yml ./config/
 # Copy the puma settings, which dictate how the web service operates
 COPY puma.rb ./config/
+# Copy an initial schema over
+COPY schema.rb ./db/
+# Production configuration
+COPY production.rb ./config/environments/
 # Finally, copy the application configuration over.
 COPY application.rb ./config/application.rb
 
 # Before installing all of the gems, specify the version of Camaleon we're using
-RUN sed -i "s|CAMA_VERSION|2.4.3.5 |g" ./Gemfile
+RUN sed -i "s|CAMA_VERSION|2.4.5 |g" ./Gemfile
 
 RUN bundle install --without development test -j4
 
 # Generate the Camaleon files
 RUN rails generate camaleon_cms:install
 
+#Configuration file for Camaleon
+COPY system.json ./config/
+
 # Finally, precompile the asset pipeline
 RUN bundle exec rake assets:precompile
-
-RUN chown -R nobody:nogroup $APP_DIR/camaleon
-USER nobody
 
 # Publish port 8080, because that's the port that nginx-proxy looks for. Be sure this is configured in your config/puma.rb file if you're recreating this repo.
 EXPOSE 8080

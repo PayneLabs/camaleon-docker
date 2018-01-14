@@ -21,7 +21,7 @@ gem "camaleon_cms",  '>= CAMA_VERSION'
 # Camaleon depends on these gems to work with Rails 5
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 gem 'draper', github: 'drapergem/draper'
-gem 'json', '1.8.3'
+gem 'json'
 
 ############################################
 #             Front-End Gems               #

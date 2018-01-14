@@ -7,7 +7,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "/var/run/docker.sock:/tmp/docker.sock"
+      - /var/run/docker.sock:/tmp/docker.sock
   db:
     image: mysql:5.7.7
     container_name: camaleon_db
@@ -16,7 +16,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: mypass
   web:
-    image: wpayne/camaleon-docker:latest
+    #image: wpayne/camaleon-docker:latest
+    build: .
     command: bundle exec puma -C config/puma.rb
     container_name: camaleon
     environment:
@@ -24,5 +25,8 @@ services:
       VIRTUAL_HOST: localhost #change to meet your needs
       DB_MYSQL_ROOT_PASSWORD: mypass #change for production safety
       DB_MYSQL_HOST: db
+      DB_DATABASE_NAME: camaleon_docker
     links:
       - db
+    volumes:
+      - ./log:/usr/camaleon/log:rw

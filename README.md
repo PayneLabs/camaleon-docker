@@ -23,7 +23,7 @@ After these commands, simply point your browser to localhost and you'll be greet
 
 I want this to become a production ready repo for those out there who simply want a turn-key solution using docker. I'll get to this more later, but if you just clone this onto a server, change the virtual host name in the docker-compose.yml file, and then run "docker-compose up -d" you'll actually be able to access it on your server from the web. No guarantees on safety yet, but that works. If you'd like to help make this repo more robust or improve/get it into line with best practices, create a PR!
 
-## Environment Variables
+### Environment Variables
 
 There are a number of environment variables in the Docker Compose file that help with configuration and extensibility. 
 
@@ -33,7 +33,9 @@ DB_MYSQL_HOST: the name of the host container in the Docker Compose file. These 
 
 SECRET_KEY_BASE: a hallmark of Rails applications, this is needed by Rails for security purposes and should be generated using a random generator. The best way to generate this is with a OpenSSL: openssl rand -hex 64
 
-VIRTUAL_HOST: when using jwilder/nginx-proxy, this environment variable is used for generating the NGinX configuration. This should be your registered domain name. 
+VIRTUAL_HOST: when using jwilder/nginx-proxy, this environment variable is used for generating the NGinX configuration. This should be your registered domain name.
+
+CAMA_VERSION: this variable is set in the Dockerfile, and should only be modified if you really want to change the version of Camaleon CMS you're using. Simply change the numberic value in the sed command. You generally won't need to worry about this. 
 ```
 
 ### How to deploy this project to production on a VPS or Dedicated Server
