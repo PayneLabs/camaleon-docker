@@ -25,6 +25,6 @@ production:
   pool: 5
   timeout: 5000
   username: root
-  password: <%= ENV['DB_ENV_MYSQL_ROOT_PASSWORD'] %>
-  host: 'db'
+  password: <%= ENV['DB_MYSQL_ROOT_PASSWORD'] %>
+  host: <%= ENV['DB_MYSQL_HOST'] %>
   database: docker_camaleon

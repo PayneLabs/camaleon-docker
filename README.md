@@ -1,6 +1,6 @@
 # Camaleon Docker
 
-A Dockerized, ready to deploy implementation of Camaleon CMS with Rails 5.0. **WIP**
+A Dockerized, ready to deploy implementation of Camaleon CMS with Rails 5.0. 
 
 ## Getting Started
 
@@ -15,13 +15,26 @@ You'll need a machine running Docker and Docker Compose with Rails 5. I built th
 ```
 docker-compose up -d db #Start up the database container
 docker-compose run web rake db:setup #Set up the database, this does the database creation and schema load
-docker-compose up #This starts up the whole thing - the complete app, which includes the web, db, and proxy
+docker-compose up #This starts up the whole thing - the complete app, which includes the web, db, and reverse proxy
 ```
 After these commands, simply point your browser to localhost and you'll be greeted with the Camaleon installer. Enjoy!
 
 ## Deployment to Production
 
 I want this to become a production ready repo for those out there who simply want a turn-key solution using docker. I'll get to this more later, but if you just clone this onto a server, change the virtual host name in the docker-compose.yml file, and then run "docker-compose up -d" you'll actually be able to access it on your server from the web. No guarantees on safety yet, but that works. If you'd like to help make this repo more robust or improve/get it into line with best practices, create a PR!
+
+## Environment Variables
+
+There are a number of environment variables in the Docker Compose file that help with configuration and extensibility. 
+
+```
+DB_MYSQL_ROOT_PASSWORD: the password to your database container's root user.
+DB_MYSQL_HOST: the name of the host container in the Docker Compose file. These environment variable is needed by database.yml in the rails application, which species database connection details.
+
+SECRET_KEY_BASE: a hallmark of Rails applications, this is needed by Rails for security purposes and should be generated using a random generator. The best way to generate this is with a OpenSSL: openssl rand -hex 64
+
+VIRTUAL_HOST: when using jwilder/nginx-proxy, this environment variable is used for generating the NGinX configuration. This should be your registered domain name. 
+```
 
 ### How to deploy this project to production on a VPS or Dedicated Server
 
@@ -57,15 +70,15 @@ Then, you'll be able to access the new domains through the single control panel 
 
   1. Add the theme you want as a submodule in Git by running:
 
-  ```
+```
   git submodule add https://github.com/PayneLabs/FoundationCama
-  ```
+```
 
   2. Copy the newly cloned repository into your container:
 
-  ```
+```
   COPY ./FoundationCama $APP_DIR/camaleon/app/apps/themes/FoundationCama
-  ```
+```
 
   See the examples for other ways to import your theme.
 
