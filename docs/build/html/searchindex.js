@@ -1,0 +1,1 @@
+Search.setIndex({docnames:["index"],envversion:52,filenames:["index.rst"],objects:{},objnames:{},objtypes:{},terms:{attempt:0,first:0,index:0,introduct:0,modul:0,page:0,restructur:0,search:0,text:0,thi:0,using:0},titles:["Welcome to Camaleon Docker\u2019s documentation!"],titleterms:{camaleon:0,docker:0,document:0,indic:0,tabl:0,welcom:0}})
