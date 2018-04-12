@@ -1,0 +1,11 @@
+sudo: required
+
+language: ruby
+
+services:
+  - docker
+
+script:
+  - echo "Building Camaleon Docker"
+  - docker build -t camaleon-docker .
+  
