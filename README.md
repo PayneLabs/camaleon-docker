@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/PayneLabs/camaleon-docker.svg?branch=master)](https://travis-ci.org/PayneLabs/camaleon-docker)
 # Camaleon Docker
 
 A Dockerized, ready to deploy implementation of Camaleon CMS with Rails 5.0. 
