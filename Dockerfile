@@ -1,6 +1,6 @@
-# Build from the Ruby 2.3 linux image for the base box.
-FROM ruby:2.3
-MAINTAINER William Payne <will@paynelabs.io>
+# Build from the Ruby 2.4 slim linux image for the base box, which is built on Debian Jesse.
+FROM ruby:2.4-slim
+LABEL maintainer="William Payne <will@paynelabs.io>"
 
 #Create the directory from which the production code will be hosted
 ENV APP_DIR=/usr/
