@@ -9,7 +9,7 @@ ENV RAILS_ENV=production
 
 # Install the basic dependencies for building rails-based applications
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y tzdata libmysqlclient-dev nodejs curl git
+    apt-get install -y tzdata libmysqlclient-dev nodejs curl git build-essential
 
 RUN mkdir -p $APP_DIR
 
