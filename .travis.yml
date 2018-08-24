@@ -6,6 +6,9 @@ services:
   - docker
 
 script:
-  - echo "Building Camaleon Docker"
-  - docker build -t camaleon-docker .
+  - docker build -f rails5.2/camaleon2.4.4.5/Dockerfile -t wpayne/camaleon-docker:rails5.2-cama2.4.4.5 .
+
+after-success:
+  - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+  - docker push wpayne/camaleon-docker
   
