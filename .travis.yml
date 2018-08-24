@@ -5,10 +5,10 @@ language: generic
 services:
   - docker
 
-script:
-  - docker build -f rails5.2/camaleon2.4.4.5/Dockerfile -t wpayne/camaleon-docker:rails5.2-cama2.4.4.5 rails5.2/camaleon2.4.4.5
-
-after-success:
-  - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-  - docker push wpayne/camaleon-docker
-  
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+      - docker build -f rails5.2/camaleon2.4.4.5/Dockerfile -t wpayne/camaleon-docker:rails5.2-cama2.4.4.5 rails5.2/camaleon2.4.4.5
+      - docker push $DOCKER_HUB_USERNAME/camaleon-docker
