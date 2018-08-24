@@ -1,6 +1,6 @@
-# Build from the Ruby 2.3 linux image for the base box.
-FROM ruby:2.3
-MAINTAINER William Payne <will@paynelabs.io>
+# Build from the Ruby 2.4 slim linux image for the base box, which is built on Debian Jesse.
+FROM ruby:2.4-slim
+LABEL maintainer="William Payne <will@paynelabs.io>"
 
 #Create the directory from which the production code will be hosted
 ENV APP_DIR=/usr/
@@ -9,7 +9,7 @@ ENV RAILS_ENV=production
 
 # Install the basic dependencies for building rails-based applications
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y tzdata libmysqlclient-dev nodejs curl git
+    apt-get install -y tzdata libmysqlclient-dev nodejs curl git build-essential
 
 RUN mkdir -p $APP_DIR
 
