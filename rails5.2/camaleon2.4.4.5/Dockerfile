@@ -11,14 +11,17 @@ ENV RAILS_SERVE_STATIC_FILES=true
 ENV PORT=8080
 
 # Install the basic dependencies for building rails-based applications
-RUN apt-get update && apt-get upgrade -y && apt-get install -yf build-essential tzdata curl git advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng pngcrush pngquant libsqlite3-dev default-libmysqlclient-dev
+RUN apt-get update && apt-get upgrade -y && apt-get install -yf build-essential tzdata curl git advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng pngcrush pngquant default-libmysqlclient-dev libsqlite3-dev
 
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
 RUN apt-get install -y nodejs
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 RUN npm install -g svgo
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install yarn
 
 RUN mkdir -p $APP_DIR
 
@@ -26,7 +29,6 @@ WORKDIR $APP_DIR
 
 # Install rails. 
 RUN gem install rails -v 5.2 --no-rdoc --no-ri
-RUN gem install sqlite3
 # Create a new rails app, but skip the bundle because we're going to add some gems.
 RUN rails new camaleon --skip-bundle
 
@@ -34,13 +36,13 @@ RUN rails new camaleon --skip-bundle
 WORKDIR $APP_DIR/camaleon
 
 # Copy the database settings
-COPY database.yml ./config/
+COPY ./database.yml ./config/
 
 # Production configuration
-COPY production.rb ./config/environments/
+COPY ./production.rb ./config/environments/
 
 # Install necessary gems
-RUN bundle inject camaleon_cms "2.4.4.5"
+RUN bundle inject camaleon_cms "= 2.4.4.5"
 RUN bundle inject dalli "2.7.8"
 RUN bundle inject json "2.1.0"
 RUN bundle inject mysql2 "0.5.2"
